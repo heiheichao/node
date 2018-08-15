@@ -6,12 +6,8 @@
 
 const http=require('http');
 const fs=require('fs');
+const query=require('querystring');
+const urllib=require('url');
 http.createServer(function(req,res){
-    fs.readFile('1.php','utf-8',function(err,data){
-        if(err){
-            res.end(err);
-        }else{
-            res.end(data);
-        }
-    })
+    res.end(urllib.parse(req.url,true).toString());
 }).listen(8080);
